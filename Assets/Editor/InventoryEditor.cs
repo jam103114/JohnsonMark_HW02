@@ -1,21 +1,32 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(Inventory))]
+[CustomEditor(typeof(InventoryManager))]
 public class InventoryEditor : Editor
 {
+    
     public override void OnInspectorGUI()
     {
-        Inventory inventory = (Inventory)target;
-
+        InventoryManager invMan = (InventoryManager)target;
+        base.OnInspectorGUI();
         GUILayout.BeginHorizontal();
 
         if (GUILayout.Button("Add Item"))
         {
-            Debug.Log(inventory.AddEquipment.name + "was added");
-
+            //Debug.Log(inventory.name + "was added");
+            invMan.AddItemFun();
         }
 
-        base.OnInspectorGUI();
-    }
+        if (GUILayout.Button("Resize Bags"))
+        {
+            //Debug.Log(inventory.name + "was added");
+            invMan.ItemDrop();
+        }
+
+        GUILayout.EndHorizontal();
+
+        
+     }
+
+
 }

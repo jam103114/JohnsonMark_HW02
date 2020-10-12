@@ -26,6 +26,7 @@ public class InventoryDrawerUIE : PropertyDrawer
         GUILayout.EndHorizontal();
         return container;
 
-        // return base.CreatePropertyGUI(property);
     }
+
+
 }

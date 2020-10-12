@@ -16,16 +16,40 @@ public class Equipment
 public class Inventory : MonoBehaviour
 {
     public Equipment AddEquipment;
-    public int ItemSlot;
+    //public int ItemSlot;
     public Equipment[] CurrentEquipment;
     
 
-    public void AddEquipementFunction()
+    public void AddEquipementFunction(int ItemSlot)
     {
-        CurrentEquipment[ItemSlot].name = AddEquipment.name;
-        CurrentEquipment[ItemSlot].attack = AddEquipment.attack;
-        CurrentEquipment[ItemSlot].defence = AddEquipment.defence;
-        CurrentEquipment[ItemSlot].rarity = AddEquipment.rarity;
-        CurrentEquipment[ItemSlot].slot = AddEquipment.slot;
+        if (CurrentEquipment.Length < ItemSlot)
+        {
+            CurrentEquipment = new Equipment[ItemSlot +1];
+        }
+        AddEquipmentFunTwo(ItemSlot);
+
+        Debug.Log("Called");
+    }
+
+    public void DropEquipmentFunction(int ItemSlot)
+    {
+        if (CurrentEquipment.Length < ItemSlot)
+        {
+            Debug.Log("Item Slot doesn't exist");
+            return;
+        }
+        else 
+        {
+            CurrentEquipment = new Equipment[ItemSlot];
+        }
+    }
+
+    public void AddEquipmentFunTwo(int IS)
+    {
+        CurrentEquipment[IS].name = AddEquipment.name;
+        CurrentEquipment[IS].attack = AddEquipment.attack;
+        CurrentEquipment[IS].defence = AddEquipment.defence;
+        CurrentEquipment[IS].rarity = AddEquipment.rarity;
+        CurrentEquipment[IS].slot = AddEquipment.slot;
     }
 }
